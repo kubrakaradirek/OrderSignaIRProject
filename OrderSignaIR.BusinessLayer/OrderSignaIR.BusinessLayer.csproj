@@ -10,8 +10,4 @@
     <ProjectReference Include="..\OrderSignaIR.DataAccessLayer\OrderSignaIR.DataAccessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Concrete\" />
-  </ItemGroup>
-
 </Project>
