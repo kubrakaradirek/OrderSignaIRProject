@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrderSignaIR.BusinessLayer.Concrete
 {
-    internal class TestimonialManager : ITestimonialService
+    public class TestimonialManager : ITestimonialService
     {
         private readonly ITestimonialDal _testimonialDal;
 
