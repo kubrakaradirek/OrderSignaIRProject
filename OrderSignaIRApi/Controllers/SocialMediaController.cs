@@ -36,14 +36,14 @@ namespace OrderSignaIRApi.Controllers
             });
             return Ok("Sosyal medya blgisi başarıyla eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteSocialMedia(int id)
         {
             var value = _socialMediaService.TGetById(id);
             _socialMediaService.TDelete(value);
             return Ok("Sosyal medya blgisi başarıyla silindi.");
         }
-        [HttpGet("GetSocialMedia")]
+        [HttpGet("{id}")]
         public IActionResult GetSocialMedia(int id)
         {
             var value = _socialMediaService.TGetById(id);

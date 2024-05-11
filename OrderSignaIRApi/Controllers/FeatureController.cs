@@ -39,14 +39,14 @@ namespace OrderSignaIRApi.Controllers
             });
             return Ok("Öne çıkan bilgisi başarıyla eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var value = _featureService.TGetById(id);
             _featureService.TDelete(value);
             return Ok("Öne çıkan bilgisi başarıyla silindi.");
         }
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetFeature(int id)
         {
             var value = _featureService.TGetById(id);

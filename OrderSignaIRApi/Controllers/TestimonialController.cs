@@ -38,14 +38,14 @@ namespace OrderSignaIRApi.Controllers
             });
             return Ok("Müşteri yorum bilgisi başarıyla eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteTestimonial(int id)
         {
             var value = _testimonialService.TGetById(id);
             _testimonialService.TDelete(value);
             return Ok("Müşteri yorum bilgisi başarıyla silindi.");
         }
-        [HttpGet("GetTestimonial")]
+        [HttpGet("{id}")]
         public IActionResult GetTestimonial(int id)
         {
             var value = _testimonialService.TGetById(id);

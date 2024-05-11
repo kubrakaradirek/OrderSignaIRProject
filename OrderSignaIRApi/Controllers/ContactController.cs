@@ -37,14 +37,14 @@ namespace OrderSignaIRApi.Controllers
             });
             return Ok("İletişim bilgisi başarıyla eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteContact(int id)
         {
             var value = _contactService.TGetById(id);
             _contactService.TDelete(value);
             return Ok("İletişim bilgisi başarıyla silindi.");
         }
-        [HttpGet("GetContact")]
+        [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
             var value = _contactService.TGetById(id);

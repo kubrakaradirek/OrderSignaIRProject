@@ -37,14 +37,14 @@ namespace OrderSignaIRApi.Controllers
             });
             return Ok("İndirim bilgisi başarıyla eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var value = _discountService.TGetById(id);
             _discountService.TDelete(value);
             return Ok("İndirim bilgisi başarıyla silindi.");
         }
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _discountService.TGetById(id);
