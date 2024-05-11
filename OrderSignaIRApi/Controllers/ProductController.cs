@@ -52,18 +52,20 @@ namespace OrderSignaIRApi.Controllers
                ImageUrl = createProductDto.ImageUrl,
                Price = createProductDto.Price,
                ProductName = createProductDto.ProductName,
-               ProductStatus = createProductDto.ProductStatus
+               ProductStatus = createProductDto.ProductStatus,
+               CategoryId=createProductDto.CategoryId
+               
             });
             return Ok("Ürün bilgisi başarıyla eklendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetById(id);
             _productService.TDelete(value);
             return Ok("Ürün bilgisi başarıyla silindi.");
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetById(id);
@@ -74,14 +76,15 @@ namespace OrderSignaIRApi.Controllers
         {
             _productService.TUpdate(new Product()
             {
-                ProductId = updateProductDto.ProductId,
                 Description = updateProductDto.Description,
                 ImageUrl = updateProductDto.ImageUrl,
                 Price = updateProductDto.Price,
                 ProductName = updateProductDto.ProductName,
-                ProductStatus = updateProductDto.ProductStatus
+                ProductStatus = updateProductDto.ProductStatus,
+                ProductId = updateProductDto.ProductId,
+                CategoryId = updateProductDto.CategoryId
             });
-            return Ok("Ürün bilgisi başarıyla güncellendi.");
+            return Ok("Ürün Bilgisi Güncellendi");
         }
 
     }
