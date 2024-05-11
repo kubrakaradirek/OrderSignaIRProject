@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OrderSignaIR.DtoLayer\OrderSignaIR.DtoLayer.csproj" />
     <ProjectReference Include="..\OrderSignaIR.EntityLayer\OrderSignaIR.EntityLayer.csproj" />
   </ItemGroup>
 

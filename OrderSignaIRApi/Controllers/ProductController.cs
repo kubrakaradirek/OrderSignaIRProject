@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OrderSignaIR.BusinessLayer.Abstract;
+using OrderSignaIR.DataAccessLayer.Concrete;
 using OrderSignaIR.DtoLayer.ProductDto;
 using OrderSignaIR.EntityLayer.Entities;
 
@@ -24,6 +26,22 @@ namespace OrderSignaIRApi.Controllers
         {
             var value = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll());
             return Ok(value);
+        }
+        [HttpGet("ProductListWithCategory")]
+        public IActionResult ProductListWithCategory() 
+        {
+            var context = new OrderSignaIRContext();
+            var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
+            {
+                Description = y.Description,
+                ImageUrl = y.ImageUrl,
+                Price = y.Price,
+                ProductId = y.ProductId,
+                ProductName = y.ProductName,
+                ProductStatus = y.ProductStatus,
+                CategoryName = y.Category.CategoryName
+            });
+            return Ok(values.ToList());
         }
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)

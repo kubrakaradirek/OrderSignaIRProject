@@ -9,5 +9,6 @@ namespace OrderSignaIR.BusinessLayer.Abstract
 {
     public interface IAboutService:IGenericService<About>
     {
+        
     }
 }

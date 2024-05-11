@@ -13,6 +13,7 @@ namespace OrderSignaIRApi.Mapping
             CreateMap<Product, CreateProductDto>().ReverseMap();
             CreateMap<Product, GetProductDto>().ReverseMap();
             CreateMap<Product, UpdateProductDto>().ReverseMap();
+            CreateMap<Product, ResultProductWithCategory>().ReverseMap();
         }
     }
 }
