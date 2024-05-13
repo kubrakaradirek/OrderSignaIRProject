@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrderSignaIR.DataAccessLayer.Abstract
 {
-    public interface IOrderDal:IGenericDal<Order>
+    public interface IMenuTableDal:IGenericDal<MenuTable>
     {
-        int TotalOrderCount();
-        int ActiveOrderCount();
-        decimal LastOrderPrice();
-        decimal TodayTotalPrice();
+        int MenuTableCount();
     }
 }

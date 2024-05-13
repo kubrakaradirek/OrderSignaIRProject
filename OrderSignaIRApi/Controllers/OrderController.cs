@@ -24,10 +24,16 @@ namespace OrderSignaIRApi.Controllers
         public IActionResult ActiveOrderCount()
         {
             return Ok(_orderService.TActiveOrderCount());
-        } [HttpGet("LastOrderPrice")]
+        } 
+        [HttpGet("LastOrderPrice")]
         public IActionResult LastOrderPrice()
         {
             return Ok(_orderService.TLastOrderPrice());
+        }
+        [HttpGet("TodayTotalPrice")]
+        public IActionResult TodayTotalPrice()
+        {
+            return Ok(_orderService.TTodayTotalPrice());
         }
     }
 }
