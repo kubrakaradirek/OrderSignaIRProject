@@ -3,16 +3,32 @@ using OrderSignaIR.BusinessLayer.Concrete;
 using OrderSignaIR.DataAccessLayer.Abstract;
 using OrderSignaIR.DataAccessLayer.Concrete;
 using OrderSignaIR.DataAccessLayer.EntityFramework;
+using OrderSignaIRApi.Hubs;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<OrderSignaIRContext>();
 
+//CORS politikasý konfigürasyonlarý
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>//CORS politikasý eklemek için
+    {
+        builder.AllowAnyHeader() // Herhangi baþlýða izin vermek için
+        .AllowAnyMethod()//metoda izin ver
+        .SetIsOriginAllowed((host) => true)//Gelen kaynaða izin vermek için
+        .AllowCredentials();//Dýþarýdan gelen herhangi kimliðe izin ver
+    });
+});
+
+//SignalR konfigürasyonlarý
+builder.Services.AddSignalR();
+
 //Mapleme iþlemi için gerekli konfigürasyon
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-builder.Services.AddScoped<IAboutService,AboutManager>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
 builder.Services.AddScoped<IBookingService, BookingManager>();
 builder.Services.AddScoped<IBookingDal, EfBookingDal>();
@@ -26,10 +42,14 @@ builder.Services.AddScoped<IFeatureService, FeatureManager>();
 builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();
-builder.Services.AddScoped<ITestimonialService,TestimonialManager>();
+builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
 builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
 builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
+builder.Services.AddScoped<IOrderService, OrderManager>();
+builder.Services.AddScoped<IOrderDal, EfOrderDal>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
+builder.Services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
 
 
 builder.Services.AddControllers();
@@ -46,10 +66,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//CORS keyini çaðýrma
+app.UseCors("CorsPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+//MapHub için
+//localhost://signalrhub çaðýrmasý için
+app.MapHub<SignalRHub>("/signalrhub");
 
 app.Run();

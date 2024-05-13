@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace OrderSignaIR.DataAccessLayer.Abstract
 {
-    public interface ICategoryDal : IGenericDal<Category>
+    public interface IOrderDal:IGenericDal<Order>
     {
-         int CategoryCount();
-        int ActiveCategoryCount();
-        int PassiveCategoryCount();
+        int TotalOrderCount();
+        int ActiveOrderCount();
+        decimal LastOrderPrice();
     }
 }
