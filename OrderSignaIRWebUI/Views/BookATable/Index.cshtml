@@ -1,0 +1,102 @@
+﻿@model CreateBookingDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+@await Component.InvokeAsync("_UILayoutHeadComponentPartial")
+
+<body class="sub_page">
+
+    @await Component.InvokeAsync("_MenuNavbarComponentPartial")
+
+    <!-- book section -->
+    <section class="book_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2>
+                    Rezervasyon Oluşturun
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form_container">
+                        <form method="post">
+                            <div>
+                                <input type="text"   class="form-control" placeholder="Adınız Soyadınız" asp-for="Name" />
+                            </div>
+                            <div>
+                                <input type="text"   class="form-control" placeholder="Telefon Numaranız" asp-for="Phone" />
+                            </div>
+                            <div>
+                                <input type="email"  class="form-control" placeholder="Email Adresiniz" asp-for="Mail" />
+                            </div>
+                            <div>
+                                <select class="form-control nice-select wide"  asp-for="PersonCount">
+                                    <option value="" disabled selected>
+                                        Kaç Kişisiniz?
+                                    </option>
+                                    <option value="1">
+                                        1
+                                    </option>
+                                    <option value="2">
+                                        2
+                                    </option>
+                                    <option value="3">
+                                        3
+                                    </option>
+                                    <option value="4">
+                                        4
+                                    </option>
+                                    <option value="5">
+                                        5
+                                    </option>
+                                    <option value="6">
+                                        6+
+                                    </option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="date" class="form-control" asp-for="Date">
+                            </div>
+                            <div class="btn_box">
+                                <button  id="btn1">
+                                    Yerinizi Ayırtın
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="map_container ">
+                        <div id="googleMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end book section -->
+    
+    @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
+
+    @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- SweetAlert kütüphanesi -->
+    <script>
+        // Butonun click olayını yakalayarak SweetAlert bildirimi göster
+        $('#btn1').click(function (post) { 
+           
+                swal({
+                    title: "Tebrikler!",
+                    text: "Rezervasyonun başarıyla alındı",
+                    icon: "success"
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>
