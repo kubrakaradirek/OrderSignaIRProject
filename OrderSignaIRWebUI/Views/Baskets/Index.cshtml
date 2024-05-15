@@ -2,6 +2,9 @@
 @{
     Layout = null;
     int count = 0;
+    decimal basketTotalPrice = 0;
+    decimal basketTotalPriceWithTax = 0;
+    decimal tax = 0;
 }
 
 <!DOCTYPE html>
@@ -22,6 +25,7 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
@@ -38,24 +42,111 @@
                     </thead>
                     @foreach (var item in Model)
                     {
+                        basketTotalPrice = Model.Sum(x => x.Price);
+                        tax = basketTotalPrice / 100 * 10;
+                        basketTotalPriceWithTax = basketTotalPrice + tax;
                         count++;
                         <tbody class="align-middle">
                             <tr>
-                                <td class="align-middle">@count</td>
-                                <td class="align-middle">@item.ProductId</td>
-                                <td class="align-middle">@item.Count</td>
-                                <td class="align-middle">@item.Price</td>
-                                <td class="align-middle">@item.TotalPrice</td>
+                                <td class="aling-middle">@count</td>
+                                <td class="aling-middle">@item.ProductName</td>
+                                <td class="aling-middle">
+                                    <div>
+                                        @Html.ActionLink("+", "IncreaseBasketItem", new { id = item.ProductId }, new { @class = "btn btn-info btn-sm increase" })
+                                    </div>
+                                    @Html.TextBoxFor(x => x.Count, new { @class = "txt" })
+                                    <div>
+                                        @Html.ActionLink("-", "DecreaseBasketItem", new { id = item.ProductId }, new { @class = "btn btn-primary btn-sm decrease" })
+                                    </div>
+                                </td>
+                                <td class="aling-middle">@item.Price</td>
+                                <td class="aling-middle">@item.TotalPrice</td>
                                 <td class="align-middle btn-delete"><a class="btn btn-sm btn-danger" href="/Baskets/DeleteBasket/@item.BasketId"><i class="fa fa-times"></i></a></td>
                             </tr>
                         </tbody>
                     }
                 </table>
             </div>
-   
+            <div class="col-log-4">
+                <form>
+                    <div class="input-group">
+                        <input type="text" id="couponcode" class="form-control border-1 p-4" placeholder="Kupon Kodunuz" />
+                        <div>
+                            <a style="height:48px;padding-top:11px; margin-left:7px;" class="btn btn-warning" id="btncouponcode">Kuponu Uygula</a>
+                        </div>
+                    </div>
+                </form>
+                <br />
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-warning pr-3">Sepet Özeti</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div id="container" class="border-bottom pb-2">
+                        <div class="d-flex justify-content-between mb-6">
+                            <h6>Toplam Tutar</h6>
+                            <h6><span id="totalprice">@basketTotalPrice</span>₺</h6>
+                        </div>
+                        <br />
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Kdv Oranı</h6>
+                            <h6 id="kdv" class="font-weight-medium">@tax</>₺</h6>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Toplam Tutar</h5>
+                            <h5><span id="totalpricewithkdv">@basketTotalPriceWithTax</span>₺</h5>
+                        </div>
+                        <button id="btnchecked" class="btn btn-block btn-warning font-weight-bold my-4">Siparişi Tamamla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
     @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
-
-
 </body>
 </html>
+<style>
+    .txt{
+        line-height:18px;
+        /* padding:0 4px 10px 4px; */
+        width: 46px !important;
+        height:32px;
+        font-size:14px;
+        text-align:center;
+        border:solid 1px #ccc;
+        margin-left:-8px;
+    }
+    .increase{
+        display:block;
+        cursor:pointer;
+        /* widht:25px; 
+        background:#e2e2e2e2; 
+        height:30px; */
+        border:solid 1px #ccc;
+       /*  text-align:center;
+        line-height:30px;
+       color:grey; 
+       font-size:18px;  */
+        position:absolute;
+        margin-top:0px;
+        margin-left:78px;
+    }
+    .decrease{
+        display: block;
+        cursor: pointer;
+       /*  widht: 25px;
+        background: #e2e2e2e2;
+        height: 30px;
+        border: solid 1px #ccc;
+        text-align: center;
+        line-height: 30px;
+        color: grey;
+        font-size: 18px; */
+        margin-top: -32px;
+        position: absolute;
+        margin-left: 7px;
+    }
+</style>

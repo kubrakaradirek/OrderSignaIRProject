@@ -1,6 +1,6 @@
-﻿namespace OrderSignaIRWebUI.Dtos.BasketDtos
+﻿namespace OrderSignaIRApi.Models
 {
-    public class ResultBasketDto
+    public class ResultBasketListWithProducts
     {
         public int BasketId { get; set; }
         public decimal Price { get; set; }

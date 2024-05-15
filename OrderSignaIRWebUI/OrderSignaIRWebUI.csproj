@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OrderSignaIR.BusinessLayer\OrderSignaIR.BusinessLayer.csproj" />
     <ProjectReference Include="..\OrderSignaIR.DtoLayer\OrderSignaIR.DtoLayer.csproj" />
   </ItemGroup>
 

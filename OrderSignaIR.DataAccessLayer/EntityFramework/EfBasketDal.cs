@@ -1,4 +1,5 @@
-﻿using OrderSignaIR.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using OrderSignaIR.DataAccessLayer.Abstract;
 using OrderSignaIR.DataAccessLayer.Concrete;
 using OrderSignaIR.DataAccessLayer.Repositories;
 using OrderSignaIR.EntityLayer.Entities;
@@ -19,7 +20,7 @@ namespace OrderSignaIR.DataAccessLayer.EntityFramework
         public List<Basket> GetBasketByMenuTableNumber(int id)
         {
             using var context = new OrderSignaIRContext();
-            var values=context.Baskets.Where(x=>x.MenuTableId==id).ToList();
+            var values=context.Baskets.Where(x=>x.MenuTableId==id).Include(y=>y.Product).ToList();
             return values;
         }
     }
