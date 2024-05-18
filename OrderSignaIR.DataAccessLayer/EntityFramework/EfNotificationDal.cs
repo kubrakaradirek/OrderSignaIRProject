@@ -16,10 +16,32 @@ namespace OrderSignaIR.DataAccessLayer.EntityFramework
 		{
 		}
 
+		public List<Notification> GetAllNotificationByFalse()
+		{
+			using var context = new OrderSignaIRContext();
+		    return context.Notifications.Where(x=>x.Status==false).ToList();
+		}
+
 		public int NotificationCountByStatusFalse()
 		{
 			using var context = new OrderSignaIRContext();
 			return context.Notifications.Where(x=>x.Status==false).Count();
 		}
-	}
+
+        public void NotificationStatusChangeToFalse(int id)
+        {
+            using var context = new OrderSignaIRContext();
+			var value = context.Notifications.Find(id);
+			value.Status = false;
+			context.SaveChanges();
+        }
+
+        public void NotificationStatusChangeToTrue(int id)
+        {
+            using var context = new OrderSignaIRContext();
+            var value = context.Notifications.Find(id);
+            value.Status = true;
+            context.SaveChanges();
+        }
+    }
 }
