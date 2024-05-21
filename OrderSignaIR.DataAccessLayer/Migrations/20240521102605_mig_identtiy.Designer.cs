@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderSignaIR.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using OrderSignaIR.DataAccessLayer.Concrete;
 namespace OrderSignaIR.DataAccessLayer.Migrations
 {
     [DbContext(typeof(OrderSignaIRContext))]
-    partial class OrderSignaIRContextModelSnapshot : ModelSnapshot
+    [Migration("20240521102605_mig_identtiy")]
+    partial class mig_identtiy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

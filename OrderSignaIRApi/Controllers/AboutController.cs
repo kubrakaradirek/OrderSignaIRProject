@@ -29,7 +29,7 @@ namespace OrderSignaIRApi.Controllers
             {
                 Title = createAboutDto.Title,
                 Description = createAboutDto.Description,
-                ImageUrl = createAboutDto.ImageUrl,
+                ImageUrl = createAboutDto.ImageUrl
             };
             _aboutService.TAdd(about);
             return Ok("Hakkımda kısmı başarılı bir şekilde eklendi.");
@@ -49,7 +49,7 @@ namespace OrderSignaIRApi.Controllers
                 AboutId = updateAboutDto.AboutId,
                 Title = updateAboutDto.Title,
                 Description = updateAboutDto.Description,
-                ImageUrl = updateAboutDto.ImageUrl,
+                ImageUrl = updateAboutDto.ImageUrl
             };
             _aboutService.TUpdate(about);
             return Ok("Hakkımda alanı başarı bir şekilde güncellendi.");

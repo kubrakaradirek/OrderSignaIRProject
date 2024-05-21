@@ -1,6 +1,11 @@
+using OrderSignaIR.DataAccessLayer.Concrete;
+using OrderSignaIR.EntityLayer.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<OrderSignaIRContext>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<OrderSignaIRContext>();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
