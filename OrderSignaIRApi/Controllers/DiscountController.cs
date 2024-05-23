@@ -77,5 +77,10 @@ namespace OrderSignaIRApi.Controllers
 			_discountService.TChangeStatusToFalse(id);
 			return Ok("Ürün İndirimi Pasif Hale Getirildi");
 		}
+		[HttpGet("GetListByStatusTrue")]
+		public IActionResult GetListByStatusTrue(int id)
+		{
+			return Ok(_discountService.TGetListByStatusTrue());
+		}
 	}
 }

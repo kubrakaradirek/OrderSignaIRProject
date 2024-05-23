@@ -31,5 +31,12 @@ namespace OrderSignaIR.DataAccessLayer.EntityFramework
 			value.Status = true;
 			context.SaveChanges();
 		}
+
+		public List<Discount> GetListByStatusTrue()
+		{
+			using var context=new OrderSignaIRContext();
+			var value=context.Discounts.Where(z=>z.Status==true).ToList();
+			return value;
+		}
 	}
 }
