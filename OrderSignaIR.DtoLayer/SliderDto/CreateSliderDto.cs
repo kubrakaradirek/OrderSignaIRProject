@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSignaIRWebUI.Dtos.SliderDtos
+namespace OrderSignaIR.DtoLayer.SliderDto
 {
-    public class ResultSliderDto
+    public class CreateSliderDto
     {
-        public int SliderId { get; set; }
         public string Title1 { get; set; }
         public string Title2 { get; set; }
         public string Title3 { get; set; }

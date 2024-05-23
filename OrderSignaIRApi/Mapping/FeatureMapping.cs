@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
 using OrderSignaIR.DtoLayer.DiscountDto;
-using OrderSignaIR.DtoLayer.FeatureDto;
+using OrderSignaIR.DtoLayer.SliderDto;
 using OrderSignaIR.EntityLayer.Entities;
 
 namespace OrderSignaIRApi.Mapping
 {
-    public class FeatureMapping:Profile
+    public class SliderMapping:Profile
     {
-        public FeatureMapping()
+        public SliderMapping()
         {
-            CreateMap<Feature, ResultFeatureDto>().ReverseMap();
-            CreateMap<Feature, CreateFeatureDto>().ReverseMap();
-            CreateMap<Feature, GetFeatureDto>().ReverseMap();
-            CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
+            CreateMap<Slider, ResultSliderDto>().ReverseMap();
+            CreateMap<Slider, CreateSliderDto>().ReverseMap();
+            CreateMap<Slider, UpdateSliderDto>().ReverseMap();
         }
     }
 }

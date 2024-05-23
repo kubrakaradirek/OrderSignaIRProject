@@ -22,8 +22,4 @@
     <ProjectReference Include="..\OrderSignaIR.DtoLayer\OrderSignaIR.DtoLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
-
 </Project>

@@ -2,7 +2,6 @@
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/AdminLayout/Index.cshtml";
-	int count = 0;
 }
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -43,7 +42,7 @@
 												<td>${item.name}</td>
 												<td>${item.phone}</td>
 												<td>${item.personCount}</td>
-												<td>${"Rezervasyon Alındı"}</td>
+												<td>${item.description}</td>
 												<td><a href="/Booking/DeleteBooking/${item.bookingId}" class="btn btn-outline-danger">Sil</a></td>
 												<td><a href="/Booking/UpdateBooking/${item.bookingId}" class="btn btn-outline-success">Güncelle</a></td>
 												<td><a href="/Booking/BookingStatusApproved/${item.bookingId}" class="btn btn-outline-info">Onayla</a></td>
@@ -68,7 +67,6 @@
 						</div>
 						<div id="bookingList"></div>
 						<a href="/Booking/CreateBooking/" class="btn btn-outline-primary">Yeni Rezervasyon Girişi</a>
-						
 					</div>
 				</div>
 			</div>

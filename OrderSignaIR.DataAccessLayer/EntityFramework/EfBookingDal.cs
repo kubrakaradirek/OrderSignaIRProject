@@ -15,5 +15,21 @@ namespace OrderSignaIR.DataAccessLayer.EntityFramework
         public EfBookingDal(OrderSignaIRContext context) : base(context)
         {
         }
-    }
+
+		public void BookingStatusApproved(int id)
+		{
+		    using var context=new OrderSignaIRContext();
+			var values=context.Bookings.Find(id);
+			values.Description = "Rezervasyon Onaylandı";
+			context.SaveChanges();
+		}
+
+		public void BookingStatusCancelled(int id)
+		{
+			using var context = new OrderSignaIRContext();
+			var values = context.Bookings.Find(id);
+			values.Description = "Rezervasyon İptal Edildi";
+			context.SaveChanges();
+		}
+	}
 }

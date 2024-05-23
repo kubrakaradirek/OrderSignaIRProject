@@ -28,6 +28,8 @@ div class="content">
 								<th scope="col">Durum</th>
 								<th scope="col">Sil</th>
 								<th scope="col">Güncelle</th>
+								<th scope="col">Aktif Yap</th>
+								<th scope="col">Pasif Yap</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -38,9 +40,11 @@ div class="content">
 									<th>@count</th>
 									<td>@item.Title</td>
 									<td>@item.Amount</td>
-									<td><a href="/Discount/DeleteDiscount/@item.DiscountId" class="btn btn-outline-warming">Durum</a></td>
+									<td>@item.Status</td>
 									<td><a href="/Discount/DeleteDiscount/@item.DiscountId" class="btn btn-outline-danger">Sil</a></td>
 									<td><a href="/Discount/UpdateDiscount/@item.DiscountId" class="btn btn-outline-success">Güncelle</a></td>
+									<td><a href="/Discount/ChangeStatusToTrue/@item.DiscountId" class="btn btn-outline-warning">Aktif Yap</a></td>
+									<td><a href="/Discount/ChangeStatusToFalse/@item.DiscountId" class="btn btn-outline-dark">Pasif Yap</a></td>
 								</tr>
 							}
 						</tbody>

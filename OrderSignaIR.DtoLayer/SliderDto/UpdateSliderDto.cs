@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSignaIRWebUI.Dtos.SliderDtos
+namespace OrderSignaIR.DtoLayer.SliderDto
 {
-    public class ResultSliderDto
+    public class UpdateSliderDto
     {
         public int SliderId { get; set; }
         public string Title1 { get; set; }

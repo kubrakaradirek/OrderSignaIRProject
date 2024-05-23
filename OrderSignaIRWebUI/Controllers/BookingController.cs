@@ -32,6 +32,7 @@ namespace OrderSignaIRWebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingDto createBookingDto)
         {
+            createBookingDto.Description = "Rezerbazyon Alındı";
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBookingDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -91,5 +92,5 @@ namespace OrderSignaIRWebUI.Controllers
             await client.GetAsync($"https://localhost:7085/api/Booking/BookingStatusCancelled/{id}");
             return RedirectToAction("Index");
         }
-    }
+	}
 }

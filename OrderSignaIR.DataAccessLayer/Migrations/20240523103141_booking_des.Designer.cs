@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderSignaIR.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using OrderSignaIR.DataAccessLayer.Concrete;
 namespace OrderSignaIR.DataAccessLayer.Migrations
 {
     [DbContext(typeof(OrderSignaIRContext))]
-    partial class OrderSignaIRContextModelSnapshot : ModelSnapshot
+    [Migration("20240523103141_booking_des")]
+    partial class booking_des
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -407,9 +409,6 @@ namespace OrderSignaIR.DataAccessLayer.Migrations
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Title")
                         .IsRequired()
