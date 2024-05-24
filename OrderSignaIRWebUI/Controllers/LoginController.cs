@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OrderSignaIR.EntityLayer.Entities;
 using OrderSignaIRWebUI.Dtos.IdentityDtos;
 
 namespace OrderSignaIRWebUI.Controllers
 {
+	[AllowAnonymous]
 	public class LoginController : Controller
 	{
 		private readonly SignInManager<AppUser> _signInManager;
@@ -27,6 +29,11 @@ namespace OrderSignaIRWebUI.Controllers
 				return RedirectToAction("Index", "Category");
 			}
 			return View();
+		}
+		public async Task<IActionResult> LogOut()
+		{
+			await _signInManager.SignOutAsync();
+			return RedirectToAction("Index", "Login");
 		}
 	}
 }

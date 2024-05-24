@@ -13,7 +13,7 @@
                             <a href="@item.Location">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 <span>
-                                    Lokasyon
+                                    Tekirdağ
                                 </span>
                             </a>
                             <a href="">
@@ -39,23 +39,7 @@
                         <p>
                             @item.FooterDescription
                         </p>
-                        <div class="footer_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-pinterest" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        @await Component.InvokeAsync("_UILayoutSocialMediaComponentPartial")
                     </div>
                 </div>
                 <div class="col-md-4 footer-col">
@@ -74,7 +58,7 @@
                 <p>
                     &copy; <span id="displayYear"></span> Tüm Hakları Saklıdır.
                     <a href="https://html.design/">Kuba Restoran</a><br><br>
-                    &copy; <span id="displayYear"></span> Geliştiren
+                    &copy; <span id="displayYear"></span>
                     <a href="https://themewagon.com/" target="_blank">Kübra Karadirek</a>
                 </p>
             </div>

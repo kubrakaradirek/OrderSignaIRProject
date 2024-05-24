@@ -12,7 +12,7 @@
 
 @await Component.InvokeAsync("_DefaultAboutComponentPartial")
 
-@await Component.InvokeAsync("_DefaultBookATableComponentPartial")
+@await Html.PartialAsync("SendMessage.cshtml");
 
 @await Component.InvokeAsync("_DefaultTestimonialComponentPartial")
 

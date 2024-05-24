@@ -3,8 +3,10 @@
     Layout = null;
     int count = 0;
     decimal basketTotalPrice = 0;
-    decimal basketTotalPriceWithTax = 0;
     decimal tax = 0;
+    decimal basketTotalPriceWithTax = 0;
+    decimal totalPriceWithCount = 0;
+    int productCount = 0;
 }
 
 <!DOCTYPE html>
@@ -40,28 +42,29 @@
                             <th>Sil</th>
                         </tr>
                     </thead>
-                    @foreach (var item in Model)
+                    @foreach (var group in Model.GroupBy(x => x.ProductName))
                     {
+                        var item = group.First();
+                        var itemCount = group.Count();
+
                         basketTotalPrice = Model.Sum(x => x.Price);
                         tax = basketTotalPrice / 100 * 10;
                         basketTotalPriceWithTax = basketTotalPrice + tax;
                         count++;
+
+                        totalPriceWithCount = item.Price * itemCount;
                         <tbody class="align-middle">
                             <tr>
-                                <td class="aling-middle">@count</td>
-                                <td class="aling-middle">@item.ProductName</td>
-                                <td class="aling-middle">
-                                    <div>
-                                        @Html.ActionLink("+", "IncreaseBasketItem", new { id = item.ProductId }, new { @class = "btn btn-info btn-sm increase" })
-                                    </div>
-                                    @Html.TextBoxFor(x => x.Count, new { @class = "txt" })
-                                    <div>
-                                        @Html.ActionLink("-", "DecreaseBasketItem", new { id = item.ProductId }, new { @class = "btn btn-primary btn-sm decrease" })
-                                    </div>
+                                <td class="align-middle">@count</td>
+                                <td class="align-middle">@item.ProductName</td>
+                                <td class="align-middle">@itemCount</td>
+                                <td class="align-middle">@item.Price</td>
+                                <td class="align-middle">@totalPriceWithCount</td>
+                                <td class="align-middle btn-delete">
+                                    <a class="btn btn-sm btn-danger" href="/Baskets/DeleteBasket/@item.BasketId">
+                                        <i class="fa fa-times"></i>
+                                    </a>
                                 </td>
-                                <td class="aling-middle">@item.Price</td>
-                                <td class="aling-middle">@item.TotalPrice</td>
-                                <td class="align-middle btn-delete"><a class="btn btn-sm btn-danger" href="/Baskets/DeleteBasket/@item.BasketId"><i class="fa fa-times"></i></a></td>
                             </tr>
                         </tbody>
                     }
@@ -108,45 +111,3 @@
     @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
 </body>
 </html>
-<style>
-    .txt{
-        line-height:18px;
-        /* padding:0 4px 10px 4px; */
-        width: 46px !important;
-        height:32px;
-        font-size:14px;
-        text-align:center;
-        border:solid 1px #ccc;
-        margin-left:-8px;
-    }
-    .increase{
-        display:block;
-        cursor:pointer;
-        /* widht:25px; 
-        background:#e2e2e2e2; 
-        height:30px; */
-        border:solid 1px #ccc;
-       /*  text-align:center;
-        line-height:30px;
-       color:grey; 
-       font-size:18px;  */
-        position:absolute;
-        margin-top:0px;
-        margin-left:78px;
-    }
-    .decrease{
-        display: block;
-        cursor: pointer;
-       /*  widht: 25px;
-        background: #e2e2e2e2;
-        height: 30px;
-        border: solid 1px #ccc;
-        text-align: center;
-        line-height: 30px;
-        color: grey;
-        font-size: 18px; */
-        margin-top: -32px;
-        position: absolute;
-        margin-left: 7px;
-    }
-</style>
