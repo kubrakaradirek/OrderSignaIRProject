@@ -31,7 +31,8 @@ namespace OrderSignaIRApi.Controllers
         public IActionResult ProductCount()
         {
             return Ok(_productService.TProductCount());
-        } [HttpGet("TProductAveragePriceByHamburger")]
+        }
+        [HttpGet("TProductAveragePriceByHamburger")]
         public IActionResult TProductAveragePriceByHamburger()
         {
             return Ok(_productService.TProductAveragePriceByHamburger());
@@ -42,10 +43,20 @@ namespace OrderSignaIRApi.Controllers
         {
             return Ok(_productService.TProductCountByCategoryNameHamburger());
         }
+        [HttpGet("TotalPriceSpaghettiCategory")]
+        public IActionResult TotalPriceSpaghettiCategory()
+        {
+            return Ok(_productService.TTotalPriceSpaghettiCategory());
+        }
         [HttpGet("ProductPriceAvg")]
         public IActionResult ProductPriceAvg()
         {
             return Ok(_productService.TProductPriceAvg());
+        }
+        [HttpGet("ProductPriceByMeatballBurger")]
+        public IActionResult ProductPriceByMeatballBurger()
+        {
+            return Ok(_productService.TProductPriceByMeatballBurger());
         }
         [HttpGet("ProductCountByDrink")]
         public IActionResult ProductCountByDrink()

@@ -17,5 +17,7 @@ namespace OrderSignaIR.BusinessLayer.Abstract
         string TProductNameByMaxPrice();
         string TProductNameByMinPrice();
         decimal TProductAveragePriceByHamburger();
+        decimal TProductPriceByMeatballBurger();
+        decimal TTotalPriceSpaghettiCategory();
     }
 }

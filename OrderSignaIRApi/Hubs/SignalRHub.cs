@@ -88,6 +88,21 @@ namespace OrderSignaIRApi.Hubs
             var value5 = _productService.TProductPriceAvg();
             await Clients.All.SendAsync("ReceiveProductPriceAvg", value5);
 
+            var value6 = _productService.TProductAveragePriceByHamburger();
+            await Clients.All.SendAsync("ReceiveProductAveragePriceByHamburger", value6);
+
+            var value7 = _productService.TProductCountByCategoryNameDrink();
+            await Clients.All.SendAsync("ReceiveProductCountByCategoryNameDrink", value7);
+
+            var value8 = _orderService.TTotalOrderCount();
+            await Clients.All.SendAsync("ReceiveTotalOrderCount", value8);
+
+            var value9 = _productService.TProductPriceByMeatballBurger();
+            await Clients.All.SendAsync("ReceiveProductPriceByMeatballBurger", value9);
+
+            var value10 = _productService.TTotalPriceSpaghettiCategory();
+            await Clients.All.SendAsync("ReceiveTotalPriceSpaghettiCategory", value10);
+
         }
         public async Task GetBookingList()
         {

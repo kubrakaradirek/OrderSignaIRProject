@@ -6,6 +6,7 @@ using OrderSignaIR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,6 +65,19 @@ namespace OrderSignaIR.DataAccessLayer.EntityFramework
         {
             using var context = new OrderSignaIRContext();
             return context.Products.Where(x=>x.CategoryId==(context.Categories.Where(y=>y.CategoryName=="Hamburger").Select(z=>z.CategoryId).FirstOrDefault())).Average(w=>w.Price);
+        }
+
+        public decimal ProductPriceByMeatballBurger()
+        {
+            using var context = new OrderSignaIRContext();
+            return context.Products.Where(x=>x.ProductName== "Köfte Burger").Select(y=>y.Price).FirstOrDefault();
+        }
+
+        public decimal TotalPriceSpaghettiCategory()
+        {
+            using var context = new OrderSignaIRContext();
+            int id=context.Categories.Where(x=>x.CategoryName=="Makarna").Select(y=>y.CategoryId).FirstOrDefault(); 
+            return context.Products.Where(x=>x.CategoryId==id).Sum(y=>y.Price);
         }
     }
 }

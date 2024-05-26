@@ -119,12 +119,12 @@
     @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
     @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
     <script>
-        function showproductid(value,name ) {
+        function showproductid(value, name) {
             var productName = name;
             var id = value;
             $.ajax({
-                type: 'post',
-                url: "/Menu/AddBasket/" +id,
+                type:'post',
+                url:"/Menu/AddBasket/"+id,
                 data: { ProductId: id },
                 contentType: 'json',
                 success: function () {

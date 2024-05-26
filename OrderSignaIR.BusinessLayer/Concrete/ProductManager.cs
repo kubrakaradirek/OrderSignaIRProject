@@ -82,5 +82,15 @@ namespace OrderSignaIR.BusinessLayer.Concrete
         {
             _productDal.Update(entity);
         }
+
+        public decimal TProductPriceByMeatballBurger()
+        {
+            return _productDal.ProductPriceByMeatballBurger();
+        }
+
+        public decimal TTotalPriceSpaghettiCategory()
+        {
+            return _productDal.TotalPriceSpaghettiCategory();
+        }
     }
 }

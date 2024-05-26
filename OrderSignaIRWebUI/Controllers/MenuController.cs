@@ -24,7 +24,7 @@ namespace OrderSignaIRWebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBasket(int id)
         {
-            CreateBasketDto createBasketDto=new CreateBasketDto();
+            CreateBasketDto createBasketDto = new CreateBasketDto();
             createBasketDto.ProductId = id;
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBasketDto);
@@ -34,7 +34,7 @@ namespace OrderSignaIRWebUI.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(createBasketDto);
+            return Json(createBasketDto);
         }
     }
 }

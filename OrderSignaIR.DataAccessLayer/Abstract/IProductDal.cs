@@ -17,6 +17,7 @@ namespace OrderSignaIR.DataAccessLayer.Abstract
         string ProductNameByMaxPrice();
         string ProductNameByMinPrice();
         decimal ProductAveragePriceByHamburger();
-
+        decimal ProductPriceByMeatballBurger();
+        decimal TotalPriceSpaghettiCategory();
     }
 }
