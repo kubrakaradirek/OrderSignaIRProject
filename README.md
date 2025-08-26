@@ -1,10 +1,13 @@
-Projede ASP.NET Core 6.0 kullanılmış olup, vitrin ve yönetici panelleri bulunmaktadır.Bu projeyi Murat Yücedağ'ın Udemy kursundaki "ASP.NET Core API SignalR ile QR kodlu sipariş yönetimi" kursunu tamamlayarak geliştirdim.  SignalR kütüphanesi, anlık bildirimler ve sepet gibi işlemler için kapsamlı bir şekilde kullanılmıştır. Restoran sistemine ait bir uygulama olan bu proje, sipariş yönetimini sağlar. Arka planda API kullanılmış olup, API yapısı kullanıcı arayüzü tarafında tüketilmiştir. Rezervasyon işlemleri için kullanıcılara e-posta gönderilmiştir. Anlık bildirimler ve sepet gibi işlemler için SignalR kullanılmıştır. N-tier mimarisi kullanılmıştır.
+This project was developed using **ASP.NET Core 6.0** and includes both a storefront and an admin panel. I developed it by completing Murat Yücedağ's Udemy course **“ASP.NET Core API with SignalR for QR Code-Based Order Management.”** The **SignalR** library was extensively used for real-time notifications and cart operations.
 
-Projede bir restoranın anlık sipariş aldığı, müşterilerin QR koduyla sipariş verebildiği, anlık bildirimler ve istatistikleri içeren gerçek zamanlı verilerin tutulduğu bir yapı bulunmaktadır. Müşteriler, oturdukları masaya göre sepetlerine ürün ekleyebilir veya çıkarabilirler. Sepet onaylandığında, sipariş anlık olarak mutfak bölümüne iletilir.
+The project is a restaurant system application that manages orders. The backend is implemented with an API, which is consumed by the user interface. Email notifications are sent to users for reservation operations. **SignalR** is used for real-time notifications and cart functionality, and the project follows an **N-tier architecture**.
 
-SignalR, sadece bildirimlerde değil, aynı zamanda siparişlerin anlık olarak şefe iletilmesinde, istatistiklerin anlık olarak değişmesinde ve masaların anlık dolu-boş durumlarının gösterilmesinde kullanılmıştır. Veritabanı olarak MSSQL kullanılmıştır. Güvenlik işlemlerinde Identity kullanılmıştır.
+The system allows a restaurant to receive real-time orders, where customers can place orders via QR codes. Real-time data, including notifications and statistics, is maintained. Customers can add or remove items from their cart based on the table they are seated at. Once the cart is confirmed, the order is sent instantly to the kitchen.
 
-## Kullanılan Teknolojiler:
+SignalR is used not only for notifications but also for instantly sending orders to the chef, updating statistics in real time, and displaying the current occupancy status of tables. **MSSQL** is used as the database, and **Identity** is used for security and authentication.
+
+
+## Used Technology
 
 -	ASP.NET Core 6.0
 
@@ -22,21 +25,21 @@ SignalR, sadece bildirimlerde değil, aynı zamanda siparişlerin anlık olarak 
 
 - AJAX
 
-## Özellikler:
+## Features:
 
--	Müşterilerin yemek siparişi verebilmesi
+-Allows customers to place food orders
 
--	Gerçek zamanlı sipariş güncellemeleri için SignalR entegrasyonu
+-SignalR integration for real-time order updates
 
--	Siparişlerin QR kodlarıyla verilebilmesi (Müşteriye gönderilir)
+-Orders can be placed using QR codes (sent to the customer)
 
--	Yöneticiye siparişleri ve güncellemeler için e-posta bildirimleri
+-Email notifications for the admin regarding orders and updates
 
--	Kimlik doğrulama ve yetkilendirme için ASP.NET Identity sistemi
+-ASP.NET Identity for authentication and authorization
 
--	AJAX kullanarak asenkron veri alışverişi
+-Asynchronous data exchange using AJAX
 
--	Kullanıcıların profil bilgilerini güncelleme ve sipariş geçmişini görüntüleme
+-Users can update profile information and view order history
 
 ![Ekran görüntüsü 2024-05-26 192713](https://github.com/kubrakaradirek/OrderSignaIRProject/assets/133059827/f7af0724-3686-4b4b-98eb-9852e7d36b0b)
 ![Ekran görüntüsü 2024-05-26 192738](https://github.com/kubrakaradirek/OrderSignaIRProject/assets/133059827/3eb7f6bd-61c5-434f-9571-82b2b8d9d660)
